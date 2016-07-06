@@ -1,60 +1,55 @@
-<!-- <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div> -->
-
-<div class="devices">
+<div data-ng-controller="MainCtrl" data-ng-init="init()">
+  <div class="devices">
     Available devices:
     <ul>
-        <li ng-repeat="device in devices" ng-click="updateDevice(device.id)">{{device.name}}</li>
+      <li ng-repeat="device in devices" ng-click="updateDevice(device.id)" ng-class="{active: device.id == currentDeviceInfo.id}">
+        <a href="javascript:;">{{device.name}}</a>
+      </li>
     </ul>
-</div>
+  </div>
 
-<div class="dashboard">
-    <div class="conditions">
-        <div class="connected" ng-if="currentDevice.connected">Connected</div>
-        <div class="disconnected" ng-if="!currentDevice.connected">Disconnected</div>
-    </div>
-</div>
+  <div class="conditions">
+    <div class="connected" ng-if="currentDevice.connected">Connected</div>
+    <div class="disconnected" ng-if="!currentDevice.connected">Disconnected</div>
+  </div>
 
-<div class="card-content">
+  <div class="card-content">
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card">Content</div>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <h3>Last Communication</h3>
+          <div class="large">{{device.lastHeard.time}}</div>
+          <div class="minor">{{device.lastHeard.date}}</div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card">Content</div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <h3>Status</h3>
+          <div class="large">{{device.status}}</div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card">Content</div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <h3>Last IP Address</h3>
+          <div class="large">{{device.lastIpAddress}}</div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card">Content</div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="card">
+          <h3>Variable: {{device.varName}}</h3>
+          <div class="large">{{device.varResult}}</div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card">Content</div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-4" ng-repeat="funcName in device.funcNames">
+        <div class="card" ng-controller="MainCtrl">
+          <h3>{{funcName}}</h3>
+          <form ng-submit="submitFunc(funcName)">
+            <input type="text" ng-model="text" name="text" />
+            <input type="submit" id="submit" value="Submit" />
+          </form>
+          {{currentDeviceInfo.functions[funcName]}}
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card">Content</div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

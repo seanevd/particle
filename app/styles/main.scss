@@ -1,128 +1,147 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-body {
-  padding: 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding: 32px 0;
-  color: #777;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-
-
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600';
 $white: #ffffff;
 $almost-white: #F7F7F7;
 $light-grey: #C7C7C7;
 $grey: #777777;
 $black: #333333;
-
 $cyan: #00ADEF;
+$emerald: #2ECC71;
+$pomegranate: #C0392B;
 
+html {
+  font-size: 1em;
+}
 body {
-    background-color: $almost-white;
-    color: $black;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #333;
+  background-color: $almost-white;
+  color: $black;
+}
+p {
+  margin-bottom: 1.3em;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 1.414em 0 0.5em;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+h1 {
+  margin-top: 0;
+  font-size: 3.998em;
+}
+h2 {
+  font-size: 2.827em;
+}
+h3 {
+  font-size: 1.999em;
+}
+h4 {
+  font-size: 1.414em;
+}
+small,
+.font_small {
+  font-size: 0.707em;
+}
+a {
+    color: $cyan;
 }
 
-.connected, .disconnected {
-    position: relative;
-    padding-left: 32px;
-    &:before {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        left: 0;
-        border-radius: 50%;
+.header {
+    padding: 32px 0;
+    background-color: $white;
+    margin-bottom: 24px;
+    border-bottom: thin solid rgba($light-grey, 0.4);
+}
+
+.devices {
+    display: inline-block;
+    margin-bottom: 16px;
+    ul {
+        display: inline-block;
+        padding-left: 8px;
     }
+    li {
+        display: inline-block;
+        margin-right: 8px;
+        &.active {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+    }
+}
+.conditions {
+    display: inline-block;
+    float: right;
+    clear: both;
+}
+.connected,
+.disconnected {
+  position: relative;
+  padding-left: 26px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -1px;
+    left: 0;
+    border-radius: 50%;
+  }
 }
 .connected {
-    &:before {
-        background-color: green;
-    }
+  &:before {
+    background-color: $emerald;
+  }
 }
 .disconnected {
-    &:before {
-        background-color: red;
+  &:before {
+    background-color: $pomegranate;
+  }
+}
+.card {
+  background-color: $white;
+  border: thin solid rgba($light-grey, 0.4);
+  padding: 32px;
+  margin-bottom: 32px;
+  border-radius: 2px;
+  h3 {
+    margin-top: 0;
+  }
+}
+.large, .minor {
+    text-align: center;
+}
+.large {
+  font-size: 2.827em;
+  font-weight: 600;
+}
+.minor {
+  font-style: italic;
+  color: $grey;
+}
+
+@media (min-width: $screen-sm-min) {
+    .col-sm-6:nth-child(2n+1) {
+        clear: both;
     }
 }
 
-
-.card {
-    background-color: $white;
-    border: thin solid rgba($light-grey, 0.4);
-    padding: 32px;
-    margin-bottom: 32px;
-    border-radius: 2px;
+@media (min-width: $screen-lg-min) {
+    .col-sm-6:nth-child(2n+1) {
+        clear: initial;
+    }
+    .col-lg-4:nth-child(3n+1) {
+        clear: both;
+    }
 }
